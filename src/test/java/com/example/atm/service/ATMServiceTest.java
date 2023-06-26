@@ -13,23 +13,23 @@ import static com.example.atm.fixtures.CoinsFixtures.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-public class ATMTest {
+public class ATMServiceTest {
 
-    private ATM atm;
+    private ATMService atmService;
 
     @BeforeEach
     public void setup() {
-        atm = new ATM();
+        atmService = new ATMService();
     }
 
 
     @Test
     void depositOneOneBillShouldGiveBalance1() {
-        depositOneBill(atm, 1);
+        depositOneBill(atmService, 1);
 
-        BigDecimal currentBalance = atm.getBalance();
+        BigDecimal currentBalance = atmService.getBalance();
         BigDecimal expectedBalance = new BigDecimal("1.00");
-        int currentQuantity = atm.bills.get(BillType.ONE);
+        int currentQuantity = atmService.bills.get(BillType.ONE);
         int expectedBillQuantity = 1;
 
         assertThat(currentQuantity).isEqualTo(expectedBillQuantity);
@@ -38,11 +38,11 @@ public class ATMTest {
 
     @Test
     void depositOneTwoBillShouldGiveBalance2() {
-        depositTwoBill(atm, 1);
+        depositTwoBill(atmService, 1);
 
-        BigDecimal currentBalance = atm.getBalance();
+        BigDecimal currentBalance = atmService.getBalance();
         BigDecimal expectedBalance = new BigDecimal("2.00");
-        int currentQuantity = atm.bills.get(BillType.TWO);
+        int currentQuantity = atmService.bills.get(BillType.TWO);
         int expectedBillQuantity = 1;
 
         assertThat(currentQuantity).isEqualTo(expectedBillQuantity);
@@ -51,11 +51,11 @@ public class ATMTest {
 
     @Test
     void depositOneFiveBillShouldGiveBalance5() {
-        depositFiveBill(atm, 1);
+        depositFiveBill(atmService, 1);
 
-        BigDecimal currentBalance = atm.getBalance();
+        BigDecimal currentBalance = atmService.getBalance();
         BigDecimal expectedBalance = new BigDecimal("5.00");
-        int currentQuantity = atm.bills.get(BillType.FIVE);
+        int currentQuantity = atmService.bills.get(BillType.FIVE);
         int expectedBillQuantity = 1;
 
         assertThat(currentQuantity).isEqualTo(expectedBillQuantity);
@@ -64,11 +64,11 @@ public class ATMTest {
 
     @Test
     void depositOneTenBillShouldGiveBalance10() {
-        depositTenBill(atm, 1);
+        depositTenBill(atmService, 1);
 
-        BigDecimal currentBalance = atm.getBalance();
+        BigDecimal currentBalance = atmService.getBalance();
         BigDecimal expectedBalance = new BigDecimal("10.00");
-        int currentQuantity = atm.bills.get(BillType.TEN);
+        int currentQuantity = atmService.bills.get(BillType.TEN);
         int expectedBillQuantity = 1;
 
         assertThat(currentQuantity).isEqualTo(expectedBillQuantity);
@@ -77,11 +77,11 @@ public class ATMTest {
 
     @Test
     void depositOneTwentyBillShouldGiveBalance20() {
-        depositTwentyBill(atm, 1);
+        depositTwentyBill(atmService, 1);
 
-        BigDecimal currentBalance = atm.getBalance();
+        BigDecimal currentBalance = atmService.getBalance();
         BigDecimal expectedBalance = new BigDecimal("20.00");
-        int currentQuantity = atm.bills.get(BillType.TWENTY);
+        int currentQuantity = atmService.bills.get(BillType.TWENTY);
         int expectedBillQuantity = 1;
 
         assertThat(currentQuantity).isEqualTo(expectedBillQuantity);
@@ -90,11 +90,11 @@ public class ATMTest {
 
     @Test
     void depositOneFiftyBillShouldGiveBalance50() {
-        depositFiftyBill(atm, 1);
+        depositFiftyBill(atmService, 1);
 
-        BigDecimal currentBalance = atm.getBalance();
+        BigDecimal currentBalance = atmService.getBalance();
         BigDecimal expectedBalance = new BigDecimal("50.00");
-        int currentQuantity = atm.bills.get(BillType.FIFTY);
+        int currentQuantity = atmService.bills.get(BillType.FIFTY);
         int expectedBillQuantity = 1;
 
         assertThat(currentQuantity).isEqualTo(expectedBillQuantity);
@@ -103,11 +103,11 @@ public class ATMTest {
 
     @Test
     void depositOneHundredBillShouldGiveBalance100() {
-        depositHundredBill(atm, 1);
+        depositHundredBill(atmService, 1);
 
-        BigDecimal currentBalance = atm.getBalance();
+        BigDecimal currentBalance = atmService.getBalance();
         BigDecimal expectedBalance = new BigDecimal("100.00");
-        int currentQuantity = atm.bills.get(BillType.HUNDRED);
+        int currentQuantity = atmService.bills.get(BillType.HUNDRED);
         int expectedBillQuantity = 1;
 
         assertThat(currentQuantity).isEqualTo(expectedBillQuantity);
@@ -116,11 +116,11 @@ public class ATMTest {
 
     @Test
     void depositOneOneCoinShouldGiveBalance001() {
-        depositOneCoin(atm, 1);
+        depositOneCoin(atmService, 1);
 
-        BigDecimal currentBalance = atm.getBalance();
+        BigDecimal currentBalance = atmService.getBalance();
         BigDecimal expectedBalance = new BigDecimal("00.01");
-        int currentQuantity = atm.coins.get(CoinType.ONE);
+        int currentQuantity = atmService.coins.get(CoinType.ONE);
         int expectedCoinQuantity = 1;
 
         assertThat(currentQuantity).isEqualTo(expectedCoinQuantity);
@@ -129,11 +129,11 @@ public class ATMTest {
 
     @Test
     void depositOneFiveCoinShouldGiveBalance005() {
-        depositFiveCoin(atm, 1);
+        depositFiveCoin(atmService, 1);
 
-        BigDecimal currentBalance = atm.getBalance();
+        BigDecimal currentBalance = atmService.getBalance();
         BigDecimal expectedBalance = new BigDecimal("00.05");
-        int currentQuantity = atm.coins.get(CoinType.FIVE);
+        int currentQuantity = atmService.coins.get(CoinType.FIVE);
         int expectedCoinQuantity = 1;
 
         assertThat(currentQuantity).isEqualTo(expectedCoinQuantity);
@@ -142,11 +142,11 @@ public class ATMTest {
 
     @Test
     void depositOneTenCoinShouldGiveBalance010() {
-        depositTenCoin(atm, 1);
+        depositTenCoin(atmService, 1);
 
-        BigDecimal currentBalance = atm.getBalance();
+        BigDecimal currentBalance = atmService.getBalance();
         BigDecimal expectedBalance = new BigDecimal("00.10");
-        int currentQuantity = atm.coins.get(CoinType.TEN);
+        int currentQuantity = atmService.coins.get(CoinType.TEN);
         int expectedCoinQuantity = 1;
 
         assertThat(currentQuantity).isEqualTo(expectedCoinQuantity);
@@ -155,11 +155,11 @@ public class ATMTest {
 
     @Test
     void depositOneTwentyFiveCoinShouldGiveBalance025() {
-        depositTwentyFiveCoin(atm, 1);
+        depositTwentyFiveCoin(atmService, 1);
 
-        BigDecimal currentBalance = atm.getBalance();
+        BigDecimal currentBalance = atmService.getBalance();
         BigDecimal expectedBalance = new BigDecimal("00.25");
-        int currentQuantity = atm.coins.get(CoinType.TWENTYFIVE);
+        int currentQuantity = atmService.coins.get(CoinType.TWENTYFIVE);
         int expectedCoinQuantity = 1;
 
         assertThat(currentQuantity).isEqualTo(expectedCoinQuantity);
@@ -168,11 +168,11 @@ public class ATMTest {
 
     @Test
     void depositOneFiftyCoinShouldGiveBalance050() {
-        depositFiftyCoin(atm, 1);
+        depositFiftyCoin(atmService, 1);
 
-        BigDecimal currentBalance = atm.getBalance();
+        BigDecimal currentBalance = atmService.getBalance();
         BigDecimal expectedBalance = new BigDecimal("00.50");
-        int currentQuantity = atm.coins.get(CoinType.FIFTY);
+        int currentQuantity = atmService.coins.get(CoinType.FIFTY);
         int expectedCoinQuantity = 1;
 
         assertThat(currentQuantity).isEqualTo(expectedCoinQuantity);
@@ -181,13 +181,13 @@ public class ATMTest {
 
     @Test
     void withdrawOneOneBillWithOneBalanceShouldGiveBalanceZero() throws NotEnoughMoneyException, NotEnoughCombinationException {
-        depositOneBill(atm, 1);
+        depositOneBill(atmService, 1);
         BigDecimal moneyToWithdraw = new BigDecimal("1.00");
-        atm.withdraw(moneyToWithdraw);
+        atmService.withdraw(moneyToWithdraw);
 
-        BigDecimal currentBalance = atm.getBalance();
+        BigDecimal currentBalance = atmService.getBalance();
         BigDecimal expectedBalance = new BigDecimal("0.00");
-        int currentQuantity = atm.bills.get(BillType.ONE);
+        int currentQuantity = atmService.bills.get(BillType.ONE);
         int expectedBillQuantity = 0;
 
         assertThat(currentQuantity).isEqualTo(expectedBillQuantity);
@@ -196,13 +196,13 @@ public class ATMTest {
 
     @Test
     void withdrawOneTwoBillWithTwoBalanceShouldGiveBalanceZero() throws NotEnoughMoneyException, NotEnoughCombinationException {
-        depositTwoBill(atm, 1);
+        depositTwoBill(atmService, 1);
         BigDecimal moneyToWithdraw = new BigDecimal("2.00");
-        atm.withdraw(moneyToWithdraw);
+        atmService.withdraw(moneyToWithdraw);
 
-        BigDecimal currentBalance = atm.getBalance();
+        BigDecimal currentBalance = atmService.getBalance();
         BigDecimal expectedBalance = new BigDecimal("0.00");
-        int currentQuantity = atm.bills.get(BillType.TWO);
+        int currentQuantity = atmService.bills.get(BillType.TWO);
         int expectedBillQuantity = 0;
 
         assertThat(currentQuantity).isEqualTo(expectedBillQuantity);
@@ -211,13 +211,13 @@ public class ATMTest {
 
     @Test
     void withdrawOneFiveBillWithFiveBalanceShouldGiveBalanceZero() throws NotEnoughMoneyException, NotEnoughCombinationException {
-        depositFiveBill(atm, 1);
+        depositFiveBill(atmService, 1);
         BigDecimal moneyToWithdraw = new BigDecimal("5.00");
-        atm.withdraw(moneyToWithdraw);
+        atmService.withdraw(moneyToWithdraw);
 
-        BigDecimal currentBalance = atm.getBalance();
+        BigDecimal currentBalance = atmService.getBalance();
         BigDecimal expectedBalance = new BigDecimal("0.00");
-        int currentQuantity = atm.bills.get(BillType.FIVE);
+        int currentQuantity = atmService.bills.get(BillType.FIVE);
         int expectedBillQuantity = 0;
 
         assertThat(currentQuantity).isEqualTo(expectedBillQuantity);
@@ -226,13 +226,13 @@ public class ATMTest {
 
     @Test
     void withdrawOneTenBillWithTenBalanceShouldGiveBalanceZero() throws NotEnoughMoneyException, NotEnoughCombinationException {
-        depositTenBill(atm, 1);
+        depositTenBill(atmService, 1);
         BigDecimal moneyToWithdraw = new BigDecimal("10.00");
-        atm.withdraw(moneyToWithdraw);
+        atmService.withdraw(moneyToWithdraw);
 
-        BigDecimal currentBalance = atm.getBalance();
+        BigDecimal currentBalance = atmService.getBalance();
         BigDecimal expectedBalance = new BigDecimal("0.00");
-        int currentQuantity = atm.bills.get(BillType.TEN);
+        int currentQuantity = atmService.bills.get(BillType.TEN);
         int expectedBillQuantity = 0;
 
         assertThat(currentQuantity).isEqualTo(expectedBillQuantity);
@@ -241,13 +241,13 @@ public class ATMTest {
 
     @Test
     void withdrawOneTwentyBillWithTwentyBalanceShouldGiveBalanceZero() throws NotEnoughMoneyException, NotEnoughCombinationException {
-        depositTwentyBill(atm, 1);
+        depositTwentyBill(atmService, 1);
         BigDecimal moneyToWithdraw = new BigDecimal("20.00");
-        atm.withdraw(moneyToWithdraw);
+        atmService.withdraw(moneyToWithdraw);
 
-        BigDecimal currentBalance = atm.getBalance();
+        BigDecimal currentBalance = atmService.getBalance();
         BigDecimal expectedBalance = new BigDecimal("0.00");
-        int currentQuantity = atm.bills.get(BillType.TWENTY);
+        int currentQuantity = atmService.bills.get(BillType.TWENTY);
         int expectedBillQuantity = 0;
 
         assertThat(currentQuantity).isEqualTo(expectedBillQuantity);
@@ -256,13 +256,13 @@ public class ATMTest {
 
     @Test
     void withdrawOneFiftyBillWithFiftyBalanceShouldGiveBalanceZero() throws NotEnoughMoneyException, NotEnoughCombinationException {
-        depositFiftyBill(atm, 1);
+        depositFiftyBill(atmService, 1);
         BigDecimal moneyToWithdraw = new BigDecimal("50.00");
-        atm.withdraw(moneyToWithdraw);
+        atmService.withdraw(moneyToWithdraw);
 
-        BigDecimal currentBalance = atm.getBalance();
+        BigDecimal currentBalance = atmService.getBalance();
         BigDecimal expectedBalance = new BigDecimal("0.00");
-        int currentQuantity = atm.bills.get(BillType.FIFTY);
+        int currentQuantity = atmService.bills.get(BillType.FIFTY);
         int expectedBillQuantity = 0;
 
         assertThat(currentQuantity).isEqualTo(expectedBillQuantity);
@@ -271,13 +271,13 @@ public class ATMTest {
 
     @Test
     void withdrawOneHundredBillWithHundredBalanceShouldGiveBalanceZero() throws NotEnoughMoneyException, NotEnoughCombinationException {
-        depositHundredBill(atm, 1);
+        depositHundredBill(atmService, 1);
         BigDecimal moneyToWithdraw = new BigDecimal("100.00");
-        atm.withdraw(moneyToWithdraw);
+        atmService.withdraw(moneyToWithdraw);
 
-        BigDecimal currentBalance = atm.getBalance();
+        BigDecimal currentBalance = atmService.getBalance();
         BigDecimal expectedBalance = new BigDecimal("0.00");
-        int currentQuantity = atm.bills.get(BillType.HUNDRED);
+        int currentQuantity = atmService.bills.get(BillType.HUNDRED);
         int expectedBillQuantity = 0;
 
         assertThat(currentQuantity).isEqualTo(expectedBillQuantity);
@@ -286,11 +286,11 @@ public class ATMTest {
 
     @Test
     void withdrawNotEnoughMoneyShouldThrownNotEnoughMoneyException () {
-        depositOneBill(atm, 1);
+        depositOneBill(atmService, 1);
         Exception expectedException = null;
         try {
             BigDecimal moneyToWithdraw = new BigDecimal("1.01");
-            atm.withdraw(moneyToWithdraw);
+            atmService.withdraw(moneyToWithdraw);
         }
         catch (Exception e) {
             expectedException = e;
@@ -300,11 +300,11 @@ public class ATMTest {
 
     @Test
     void withdrawNoCombinationShouldThrownNotEnoughCombinationException () {
-        depositHundredBill(atm, 1);
+        depositHundredBill(atmService, 1);
         Exception expectedException = null;
         try {
             BigDecimal moneyToWithdraw = new BigDecimal("50.00");
-            atm.withdraw(moneyToWithdraw);
+            atmService.withdraw(moneyToWithdraw);
         }
         catch (Exception e) {
             expectedException = e;

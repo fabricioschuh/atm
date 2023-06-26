@@ -11,20 +11,20 @@ import java.util.LinkedHashMap;
 
 @Getter
 @Setter
-public class ATM {
+public class ATMService {
     LinkedHashMap<BillType, Integer> bills = new LinkedHashMap<>();
     LinkedHashMap<CoinType, Integer> coins = new LinkedHashMap<>();
     private BigDecimal balance;
 
-    public ATM(LinkedHashMap<BillType, Integer> bills, LinkedHashMap<CoinType, Integer> coins) {
-        //initializing ATM with desired bills and coins
+    public ATMService(LinkedHashMap<BillType, Integer> bills, LinkedHashMap<CoinType, Integer> coins) {
+        //initializing ATMService with desired bills and coins
         this.bills = bills;
         this.coins = coins;
         this.balance = new BigDecimal("0.00");
     }
 
-    public ATM() {
-        //initializing ATM with ZERO for each bill and Coin
+    public ATMService() {
+        //initializing ATMService with ZERO for each bill and Coin
         this.bills.put(BillType.ONE, 0);
         this.bills.put(BillType.TWO, 0);
         this.bills.put(BillType.FIVE, 0);
@@ -61,7 +61,7 @@ public class ATM {
         //convert quantity to BigDecimal
         BigDecimal qty = new BigDecimal(quantity);
 
-        //update ATM balance
+        //update ATMService balance
         balance = balance.add(qty.multiply(coin.value));
     }
 
@@ -108,7 +108,7 @@ public class ATM {
         //quantity needed to withdraw
         BigDecimal billsNeededToWithdraw = moneyToWithdraw.divideToIntegralValue(billType.value);
 
-        //available Bills in the ATM
+        //available Bills in the ATMService
         BigDecimal availableBillsToWithdraw = new BigDecimal(bills.get(billType));
 
         //in case of 0 or -1 -> there are available bills to withdraw
@@ -122,7 +122,7 @@ public class ATM {
             //update quantity based on comparison
             quantityBillToWithdraw = billsNeededToWithdraw;
 
-            //get total money to subtract from ATM balance
+            //get total money to subtract from ATMService balance
             totalValue = quantityBillToWithdraw.multiply(new BigDecimal(stringValue));
             balance = balance.subtract(totalValue);
 
@@ -143,7 +143,7 @@ public class ATM {
         //quantity needed to withdraw
         BigDecimal coinsNeededToWithdraw = moneyToWithdraw.divideToIntegralValue(coinType.value);
 
-        //available Coins in ATM
+        //available Coins in ATMService
         BigDecimal availableCoinsToWithdraw = new BigDecimal(coins.get(coinType));
 
         //in case of 0 or -1 -> there are available coins to withdraw
@@ -157,7 +157,7 @@ public class ATM {
             //update quantity based on comparison
             quantityCoinsToWithdraw = coinsNeededToWithdraw;
 
-            //get total money to subtract from ATM balance
+            //get total money to subtract from ATMService balance
             totalValue = quantityCoinsToWithdraw.multiply(new BigDecimal(stringValue));
             balance = balance.subtract(totalValue);
 

@@ -94,7 +94,10 @@ public class ATMService {
         moneyToWithdraw = withdrawCoins(moneyToWithdraw, CoinType.ONE, "0.01", moneyQuantity);
 
         //check whether all possible bills and coins were withdraw but there are still some money to withdraw (combinations are not satisfied)
+
+        //application will finish in case of exception or can continue in case we just want to display the message
         if (moneyToWithdraw.compareTo(new BigDecimal("0.00")) != 0) {
+//            System.out.println("There are no more combinations of Bills and Coins available at the ATMService!!");
             throw new NotEnoughCombinationException();
         }
 

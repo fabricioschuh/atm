@@ -285,7 +285,7 @@ public class ATMServiceTest {
     }
 
     @Test
-    void withdrawNotEnoughMoneyShouldThrownNotEnoughMoneyException () {
+    void withdrawNotEnoughMoneyShouldThrownNotEnoughMoneyException() {
         depositOneBill(atmService, 1);
         Exception expectedException = null;
         try {
@@ -299,7 +299,7 @@ public class ATMServiceTest {
     }
 
     @Test
-    void withdrawNoCombinationShouldThrownNotEnoughCombinationException () {
+    void withdrawNoCombinationShouldThrownNotEnoughCombinationException() {
         depositHundredBill(atmService, 1);
         Exception expectedException = null;
         try {
@@ -310,6 +310,32 @@ public class ATMServiceTest {
             expectedException = e;
         }
         assertThat(expectedException.getClass()).isEqualTo(NotEnoughCombinationException.class);
+    }
+
+    @Test
+    void withdrawZeroShouldThrownActionNotAllowedException() {
+        Exception expectedException = null;
+        try {
+            BigDecimal moneyToWithdraw = new BigDecimal("00.00");
+            atmService.withdraw(moneyToWithdraw);
+        }
+        catch (Exception e) {
+            expectedException = e;
+        }
+        assertThat(expectedException.getClass()).isEqualTo(ActionNotAllowed.class);
+    }
+
+    @Test
+    void withdrawLessThanZeroShouldThrownActionNotAllowedException() {
+        Exception expectedException = null;
+        try {
+            BigDecimal moneyToWithdraw = new BigDecimal("-00.01");
+            atmService.withdraw(moneyToWithdraw);
+        }
+        catch (Exception e) {
+            expectedException = e;
+        }
+        assertThat(expectedException.getClass()).isEqualTo(ActionNotAllowed.class);
     }
 
     @Test

@@ -180,7 +180,7 @@ public class ATMServiceTest {
     }
 
     @Test
-    void withdrawOneOneBillWithOneBalanceShouldGiveBalanceZero() throws NotEnoughMoneyException, NotEnoughCombinationException {
+    void withdrawOneOneBillWithOneBalanceShouldGiveBalanceZero() throws NotEnoughMoneyException, NotEnoughCombinationException, ActionNotAllowed {
         depositOneBill(atmService, 1);
         BigDecimal moneyToWithdraw = new BigDecimal("1.00");
         atmService.withdraw(moneyToWithdraw);
@@ -195,7 +195,7 @@ public class ATMServiceTest {
     }
 
     @Test
-    void withdrawOneTwoBillWithTwoBalanceShouldGiveBalanceZero() throws NotEnoughMoneyException, NotEnoughCombinationException {
+    void withdrawOneTwoBillWithTwoBalanceShouldGiveBalanceZero() throws NotEnoughMoneyException, NotEnoughCombinationException, ActionNotAllowed {
         depositTwoBill(atmService, 1);
         BigDecimal moneyToWithdraw = new BigDecimal("2.00");
         atmService.withdraw(moneyToWithdraw);
@@ -210,7 +210,7 @@ public class ATMServiceTest {
     }
 
     @Test
-    void withdrawOneFiveBillWithFiveBalanceShouldGiveBalanceZero() throws NotEnoughMoneyException, NotEnoughCombinationException {
+    void withdrawOneFiveBillWithFiveBalanceShouldGiveBalanceZero() throws NotEnoughMoneyException, NotEnoughCombinationException, ActionNotAllowed {
         depositFiveBill(atmService, 1);
         BigDecimal moneyToWithdraw = new BigDecimal("5.00");
         atmService.withdraw(moneyToWithdraw);
@@ -225,7 +225,7 @@ public class ATMServiceTest {
     }
 
     @Test
-    void withdrawOneTenBillWithTenBalanceShouldGiveBalanceZero() throws NotEnoughMoneyException, NotEnoughCombinationException {
+    void withdrawOneTenBillWithTenBalanceShouldGiveBalanceZero() throws NotEnoughMoneyException, NotEnoughCombinationException, ActionNotAllowed {
         depositTenBill(atmService, 1);
         BigDecimal moneyToWithdraw = new BigDecimal("10.00");
         atmService.withdraw(moneyToWithdraw);
@@ -240,7 +240,7 @@ public class ATMServiceTest {
     }
 
     @Test
-    void withdrawOneTwentyBillWithTwentyBalanceShouldGiveBalanceZero() throws NotEnoughMoneyException, NotEnoughCombinationException {
+    void withdrawOneTwentyBillWithTwentyBalanceShouldGiveBalanceZero() throws NotEnoughMoneyException, NotEnoughCombinationException, ActionNotAllowed {
         depositTwentyBill(atmService, 1);
         BigDecimal moneyToWithdraw = new BigDecimal("20.00");
         atmService.withdraw(moneyToWithdraw);
@@ -255,7 +255,7 @@ public class ATMServiceTest {
     }
 
     @Test
-    void withdrawOneFiftyBillWithFiftyBalanceShouldGiveBalanceZero() throws NotEnoughMoneyException, NotEnoughCombinationException {
+    void withdrawOneFiftyBillWithFiftyBalanceShouldGiveBalanceZero() throws NotEnoughMoneyException, NotEnoughCombinationException, ActionNotAllowed {
         depositFiftyBill(atmService, 1);
         BigDecimal moneyToWithdraw = new BigDecimal("50.00");
         atmService.withdraw(moneyToWithdraw);
@@ -270,7 +270,7 @@ public class ATMServiceTest {
     }
 
     @Test
-    void withdrawOneHundredBillWithHundredBalanceShouldGiveBalanceZero() throws NotEnoughMoneyException, NotEnoughCombinationException {
+    void withdrawOneHundredBillWithHundredBalanceShouldGiveBalanceZero() throws NotEnoughMoneyException, NotEnoughCombinationException, ActionNotAllowed {
         depositHundredBill(atmService, 1);
         BigDecimal moneyToWithdraw = new BigDecimal("100.00");
         atmService.withdraw(moneyToWithdraw);
@@ -313,7 +313,7 @@ public class ATMServiceTest {
     }
 
     @Test
-    void depositAndWithdrawEachTypeShouldGiveBalanceZero() throws NotEnoughMoneyException, NotEnoughCombinationException {
+    void depositAndWithdrawEachTypeShouldGiveBalanceZero() throws NotEnoughMoneyException, NotEnoughCombinationException, ActionNotAllowed {
         depositOneBill(atmService, 1);
         depositTwoBill(atmService, 1);
         depositFiveBill(atmService, 1);

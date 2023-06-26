@@ -65,13 +65,17 @@ public class ATMService {
         balance = balance.add(qty.multiply(coin.value));
     }
 
-    public LinkedHashMap<Key, Integer> withdraw(BigDecimal moneyToWithdraw) throws NotEnoughMoneyException, NotEnoughCombinationException {
+    public LinkedHashMap<Key, Integer> withdraw(BigDecimal moneyToWithdraw) throws NotEnoughMoneyException, NotEnoughCombinationException, ActionNotAllowed {
         //HashMap to return the least number of bills and coins for that amount.
         LinkedHashMap<BillType, Integer> leastBillsQuantity = new LinkedHashMap<>();
         LinkedHashMap<CoinType, Integer> leastCoinsQuantity = new LinkedHashMap<>();
 
         if (moneyToWithdraw.compareTo(balance) == 1) {
             throw new NotEnoughMoneyException();
+        }
+
+        if (moneyToWithdraw.compareTo(new BigDecimal("0.00")) <= 0) {
+            throw new ActionNotAllowed();
         }
 
         //withdraw Bills

@@ -2,7 +2,7 @@ package com.example.atm;
 
 import com.example.atm.model.BillType;
 import com.example.atm.model.CoinType;
-import com.example.atm.service.ATM;
+import com.example.atm.service.ATMService;
 import com.example.atm.service.NotEnoughCombinationException;
 import com.example.atm.service.NotEnoughMoneyException;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,24 +14,25 @@ public class AtmApplication {
 
 	public static void main(String[] args) throws NotEnoughMoneyException, NotEnoughCombinationException {
 //		SpringApplication.run(AtmApplication.class, args);
-		ATM atm = new ATM();
-//		atm.depositBill(BillType.ONE,1);
-//		atm.depositBill(BillType.TWO,1);
-//		atm.depositBill(BillType.FIVE, 1);
-//		atm.depositBill(BillType.TEN, 1);
-//		atm.depositBill(BillType.TWENTY, 1);
-		atm.depositBill(BillType.FIFTY,2);
-		atm.depositBill(BillType.HUNDRED, 2);
-//
-//		atm.depositCoin(CoinType.ONE, 1);
-//		atm.depositCoin(CoinType.FIVE, 1);
-		atm.depositCoin(CoinType.TEN, 1);
-		atm.depositCoin(CoinType.FIFTY,1);
+		ATMService atmService = new ATMService();
+		atmService.depositBill(BillType.ONE,1);
+		atmService.depositBill(BillType.TWO,1);
+		atmService.depositBill(BillType.FIVE, 1);
+		atmService.depositBill(BillType.TEN, 1);
+		atmService.depositBill(BillType.TWENTY, 1);
+		atmService.depositBill(BillType.FIFTY,1);
+		atmService.depositBill(BillType.HUNDRED, 1);
 
-		System.out.println("$"+atm.getBalance());
-		BigDecimal value = new BigDecimal("150.50");
-		atm.withdraw(value);
-		System.out.println("$"+atm.getBalance());
+		atmService.depositCoin(CoinType.ONE, 1);
+		atmService.depositCoin(CoinType.FIVE, 1);
+		atmService.depositCoin(CoinType.TEN, 1);
+		atmService.depositCoin(CoinType.TWENTYFIVE, 1);
+		atmService.depositCoin(CoinType.FIFTY,1);
+
+		System.out.println("$"+ atmService.getBalance());
+		BigDecimal value = new BigDecimal("150.00");
+		atmService.withdraw(value);
+		System.out.println("$"+ atmService.getBalance());
 	}
 
 }

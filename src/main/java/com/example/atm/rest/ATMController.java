@@ -18,17 +18,17 @@ public class ATMController {
 
     public static final String PATH = "/api/v1/atm";
     private final ATMService atmService;
-    private final ATMRepository.AtmRepository atmRepository;
+    private final ATMRepository atmRepository;
 
     @PostMapping("/deposit/bill")
     public ResponseEntity<Void> depositBill(@RequestBody BillType billType, @RequestBody int quantity) {
-        atmService.depositBill(billType, quantity);
+//        atmService.depositBill(billType, quantity);
         return ResponseEntity.noContent().build();
     }
 
     @PostMapping("/deposit/coin")
     public ResponseEntity<Void> depositCoin(@RequestBody CoinType coinType, @RequestBody int quantity) {
-        atmService.depositCoin(coinType, quantity);
+//        atmService.depositCoin(coinType, quantity);
         return ResponseEntity.noContent().build();
     }
 

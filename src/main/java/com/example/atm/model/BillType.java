@@ -1,10 +1,12 @@
 package com.example.atm.model;
 
+import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 
 import java.math.BigDecimal;
 
 @AllArgsConstructor
+@Entity
 public enum BillType {
     ONE(new BigDecimal("1.00")),
     TWO(new BigDecimal("2.00")),

@@ -1,4 +1,4 @@
-# atm
+# ATM
 
 You go to an ATM and wish to withdraw money. Write a program that, given any amount of money to withdraw, will give you the least amount of bills (Available bills: $1, $2, $5, $10, $20, $50, $100) and coins (0.01, 0.05, 0.10, 0.50).
  

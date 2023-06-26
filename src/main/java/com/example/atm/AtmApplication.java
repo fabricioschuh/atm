@@ -3,6 +3,7 @@ package com.example.atm;
 import com.example.atm.model.BillType;
 import com.example.atm.model.CoinType;
 import com.example.atm.service.ATMService;
+import com.example.atm.service.ActionNotAllowed;
 import com.example.atm.service.NotEnoughCombinationException;
 import com.example.atm.service.NotEnoughMoneyException;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,7 +13,7 @@ import java.math.BigDecimal;
 @SpringBootApplication
 public class AtmApplication {
 
-	public static void main(String[] args) throws NotEnoughMoneyException, NotEnoughCombinationException {
+	public static void main(String[] args) throws NotEnoughMoneyException, NotEnoughCombinationException, ActionNotAllowed {
 //		SpringApplication.run(AtmApplication.class, args);
 		ATMService atmService = new ATMService();
 		atmService.depositBill(BillType.ONE,1);

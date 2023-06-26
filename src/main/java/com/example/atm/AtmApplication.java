@@ -20,16 +20,16 @@ public class AtmApplication {
 //		atm.depositBill(BillType.FIVE, 1);
 //		atm.depositBill(BillType.TEN, 1);
 //		atm.depositBill(BillType.TWENTY, 1);
-		atm.depositBill(BillType.FIFTY,1);
-		atm.depositBill(BillType.HUNDRED, 1);
+		atm.depositBill(BillType.FIFTY,2);
+		atm.depositBill(BillType.HUNDRED, 2);
 //
 //		atm.depositCoin(CoinType.ONE, 1);
 //		atm.depositCoin(CoinType.FIVE, 1);
-//		atm.depositCoin(CoinType.TEN, 1);
-//		atm.depositCoin(CoinType.FIFTY,1);
+		atm.depositCoin(CoinType.TEN, 1);
+		atm.depositCoin(CoinType.FIFTY,1);
 
 		System.out.println("$"+atm.getBalance());
-		BigDecimal value = new BigDecimal("100.00");
+		BigDecimal value = new BigDecimal("150.50");
 		atm.withdraw(value);
 		System.out.println("$"+atm.getBalance());
 	}

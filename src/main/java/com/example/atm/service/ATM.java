@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.security.Key;
 import java.util.LinkedHashMap;
 
 @Getter
@@ -64,7 +65,7 @@ public class ATM {
         balance = balance.add(qty.multiply(coin.value));
     }
 
-    public void withdraw(BigDecimal moneyToWithdraw) throws NotEnoughMoneyException, NotEnoughCombinationException {
+    public LinkedHashMap<Key, Integer> withdraw(BigDecimal moneyToWithdraw) throws NotEnoughMoneyException, NotEnoughCombinationException {
         //HashMap to return the least number of bills and coins for that amount.
         LinkedHashMap<BillType, Integer> leastBillsQuantity = new LinkedHashMap<>();
         LinkedHashMap<CoinType, Integer> leastCoinsQuantity = new LinkedHashMap<>();
@@ -96,6 +97,11 @@ public class ATM {
 
         System.out.println(leastBillsQuantity);
         System.out.println(leastCoinsQuantity);
+
+        //Merge Bills and Coins quantity
+        LinkedHashMap<Key, Integer> finalQty = new LinkedHashMap<>();
+
+        return finalQty;
     }
 
     private BigDecimal withdrawBills(BigDecimal moneyToWithdraw, BillType billType, String stringValue, LinkedHashMap<BillType, Integer> leastBillsQuantity) {

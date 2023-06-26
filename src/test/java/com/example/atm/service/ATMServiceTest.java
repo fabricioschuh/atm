@@ -311,4 +311,33 @@ public class ATMServiceTest {
         }
         assertThat(expectedException.getClass()).isEqualTo(NotEnoughCombinationException.class);
     }
+
+    @Test
+    void depositAndWithdrawEachTypeShouldGiveBalanceZero() throws NotEnoughMoneyException, NotEnoughCombinationException {
+        depositOneBill(atmService, 1);
+        depositTwoBill(atmService, 1);
+        depositFiveBill(atmService, 1);
+        depositTenBill(atmService, 1);
+        depositTwentyBill(atmService, 1);
+        depositFiftyBill(atmService, 1);
+        depositHundredBill(atmService, 1);
+
+        depositOneCoin(atmService, 1);
+        depositFiveCoin(atmService, 1);
+        depositTenCoin(atmService, 1);
+        depositTwentyFiveCoin(atmService, 1);
+        depositFiftyCoin(atmService, 1);
+
+        BigDecimal currentBalance = atmService.getBalance();
+        BigDecimal expectedBalance = new BigDecimal("188.91");
+
+        assertThat(currentBalance).isEqualTo(expectedBalance);
+
+        BigDecimal moneyToWithdraw = new BigDecimal("188.91");
+        atmService.withdraw(moneyToWithdraw);
+
+        BigDecimal newCurrentBalance = atmService.getBalance();
+        BigDecimal newExpectedBalance = new BigDecimal("00.00");
+        assertThat(newCurrentBalance).isEqualTo(newExpectedBalance);
+    }
 }

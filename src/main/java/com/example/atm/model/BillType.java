@@ -15,4 +15,8 @@ public enum BillType {
     HUNDRED(new BigDecimal("100.00"));
 
     public final BigDecimal value;
+
+    public String getIDAsString() {
+        return "Bill: " + this.name();
+    }
 }

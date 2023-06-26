@@ -13,4 +13,8 @@ public enum CoinType {
     FIFTY(new BigDecimal("0.50"));
 
     public final BigDecimal value;
+
+    public String getIDAsString() {
+        return "Coin: " + this.name();
+    }
 }

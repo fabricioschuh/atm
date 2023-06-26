@@ -74,7 +74,7 @@ public class ATMService {
             throw new NotEnoughMoneyException();
         }
 
-        if (moneyToWithdraw.compareTo(new BigDecimal("0.00")) >= 0) {
+        if (moneyToWithdraw.compareTo(new BigDecimal("0.00")) <= 0) {
             throw new ActionNotAllowed();
         }
 

@@ -31,7 +31,7 @@ public class AtmApplication {
 		atmService.depositCoin(CoinType.FIFTY,1);
 
 		System.out.println("$"+ atmService.getBalance());
-		BigDecimal value = new BigDecimal("150.00");
+		BigDecimal value = new BigDecimal("-1.00");
 		atmService.withdraw(value);
 		System.out.println("$"+ atmService.getBalance());
 	}

@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.security.Key;
 import java.util.LinkedHashMap;
 
 @Getter
@@ -174,5 +173,7 @@ public class ATMService {
         return moneyToWithdraw.subtract(totalValue);
     }
 
-
+//    public BigDecimal currencyConversion (BigDecimal value) {
+//        BigDecimal newCurrency =
+//    }
 }

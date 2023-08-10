@@ -1,21 +1,16 @@
 package com.example.atm;
 
-import com.example.atm.model.BillType;
-import com.example.atm.model.CoinType;
-import com.example.atm.service.ATMService;
-import com.example.atm.service.ActionNotAllowed;
-import com.example.atm.service.NotEnoughCombinationException;
-import com.example.atm.service.NotEnoughMoneyException;
+import com.example.atm.currency.CurrencyGet;
+import com.example.atm.service.*;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.math.BigDecimal;
 
 @SpringBootApplication
 public class AtmApplication {
 
-	public static void main(String[] args) throws NotEnoughMoneyException, NotEnoughCombinationException, ActionNotAllowed {
+	public static void main(String[] args) throws Exception {
 //		SpringApplication.run(AtmApplication.class, args);
 		ATMService atmService = new ATMService();
+		CurrencyGet currencyGet = new CurrencyGet();
 //		atmService.depositBill(BillType.ONE,50);
 //		atmService.depositBill(BillType.TWO,50);
 //		atmService.depositBill(BillType.FIVE, 50);
@@ -34,7 +29,8 @@ public class AtmApplication {
 //		BigDecimal value = new BigDecimal("147.32");
 //		atmService.withdraw(value);
 //		System.out.println("$"+ atmService.getBalance());
-		atmService.getJson();
+
+		currencyGet.currencyConversion("USD");
 	}
 
 }

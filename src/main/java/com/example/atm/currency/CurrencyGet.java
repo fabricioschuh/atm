@@ -12,11 +12,12 @@ public class CurrencyGet {
 
     public void currencyConversion(String currency) throws Exception {
         try {
-
+            //            https://stackoverflow.com/questions/2591098/how-to-parse-json-in-java
             URL url = new URL(URL_GET+currency);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Accept", "application/json");
+
             if (conn.getResponseCode() != 200) {
                 throw new RuntimeException("Failed : HTTP Error code : "
                         + conn.getResponseCode());
@@ -25,8 +26,8 @@ public class CurrencyGet {
             BufferedReader br = new BufferedReader(in);
             String output;
 
-//            https://stackoverflow.com/questions/2591098/how-to-parse-json-in-java
-
+            //TODO
+            //Parse json into array and find the currency needed
 
             while ((output = br.readLine()) != null) {
                 System.out.println(output);
